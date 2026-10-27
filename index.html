@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal & Simulasi TKA Matematika SMA 2026 - Aljabar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- MathJax Configuration and Script -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .math-scroll { overflow-x: auto; max-width: 100%; padding-bottom: 4px; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between selection:bg-blue-500 selection:text-white">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="goHome()">
+                <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-blue-500/30">
+                    $\pi$
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg leading-tight tracking-tight text-white">TKA Matematika <span class="text-blue-400">Aljabar</span></h1>
+                    <p class="text-xs text-slate-400 font-medium">Simulasi & Latihan Soal SMA/MA</p>
+                </div>
+            </div>
+
+            <!-- Quiz Controls Header (Hidden on Home) -->
+            <div id="quiz-header-controls" class="hidden flex items-center space-x-4">
+                <div class="flex items-center space-x-2 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700">
+                    <i data-lucide="clock" class="w-4 h-4 text-amber-400"></i>
+                    <span id="timer-display" class="font-mono text-sm sm:text-base font-bold text-amber-400">45:00</span>
+                </div>
+                <button onclick="confirmSubmitQuiz()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm px-4 py-2 rounded-lg transition-all shadow-md shadow-emerald-600/20 flex items-center space-x-1.5">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i>
+                    <span>Selesaikan Ujian</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main id="app-container" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-grow w-full">
+
+        <!-- ================= PAGE 1: HOME / LANDING ================= -->
+        <section id="page-home" class="space-y-8 animate-fadeIn">
+            <!-- Hero Banner -->
+            <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl border border-slate-800">
+                <div class="absolute -right-10 -bottom-10 w-80 h-80 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl space-y-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 mr-1.5"></i> Fokus Materi: Aljabar TKA 2026
+                    </span>
+                    <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                        Simulasi Khusus Penalaran Aljabar SMA/MA
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Uji kemampuan eksponen, logaritma, fungsi kuadrat, sistem persamaan, barisan deret, hingga matriks dengan 15 soal pilihan ganda berstandar tinggi lengkap dengan pembahasan lengkap.
+                    </p>
+
+                    <!-- Features Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4">
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+                            <div class="text-xs text-slate-400">Jumlah Soal</div>
+                            <div class="text-lg font-bold text-white">15 Nomor</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm">
+                            <div class="text-xs text-slate-400">Durasi Waktu</div>
+                            <div class="text-lg font-bold text-white">45 Menit</div>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-3 backdrop-blur-sm col-span-2 sm:col-span-1">
+                            <div class="text-xs text-slate-400">Navigasi Soal</div>
+                            <div class="text-lg font-bold text-blue-400">Di Atas Soal</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                        <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 text-base cursor-pointer">
+                            <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                            <span>Mulai Simulasi Aljabar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: QUIZ / TEST SIMULATION ================= -->
+        <section id="page-quiz" class="hidden space-y-6">
+            <!-- Progress Bar -->
+            <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 flex items-center justify-between gap-4">
+                <div class="flex-grow">
+                    <div class="flex justify-between text-xs font-semibold text-slate-500 mb-1.5">
+                        <span>Kemajuan Tes Aljabar</span>
+                        <span id="progress-text">0 dari 15 Terjawab</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                        <div id="progress-bar-fill" class="bg-blue-600 h-full w-0 transition-all duration-300"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Question Number Palette Grid -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-200 space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="font-bold text-slate-900 text-sm flex items-center space-x-2">
+                        <i data-lucide="grid" class="w-4 h-4 text-blue-600"></i>
+                        <span>Navigasi Nomor Soal</span>
+                    </h3>
+                    <div class="flex items-center space-x-3 text-xs text-slate-500">
+                        <span class="flex items-center space-x-1"><span class="w-3 h-3 rounded bg-blue-600 inline-block"></span><span>Terjawab</span></span>
+                        <span class="flex items-center space-x-1"><span class="w-3 h-3 rounded bg-amber-500 inline-block"></span><span>Ragu</span></span>
+                        <span class="flex items-center space-x-1"><span class="w-3 h-3 rounded bg-slate-200 inline-block"></span><span>Belum</span></span>
+                    </div>
+                </div>
+                <!-- Palette Buttons Container -->
+                <div id="question-palette" class="grid grid-cols-5 sm:grid-cols-15 gap-2 pt-1">
+                    <!-- 15 Palette Buttons Injected Here -->
+                </div>
+            </div>
+
+            <!-- Question Container -->
+            <div class="space-y-6">
+                <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 space-y-6">
+                    <!-- Question Header Meta -->
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
+                        <div class="flex items-center space-x-2">
+                            <span id="q-number-badge" class="bg-blue-600 text-white font-extrabold px-3 py-1 rounded-lg text-sm">
+                                Soal #1
+                            </span>
+                            <span id="q-type-badge" class="bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-lg text-xs">
+                                Pilihan Ganda
+                            </span>
+                            <span id="q-diff-badge" class="bg-emerald-100 text-emerald-700 font-semibold px-2.5 py-1 rounded-lg text-xs">
+                                Sedang
+                            </span>
+                        </div>
+                        <span id="q-topic-badge" class="text-xs font-medium text-slate-500 bg-slate-50 px-3 py-1 rounded-full border border-slate-200">
+                            Eksponen & Akar
+                        </span>
+                    </div>
+
+                    <!-- Question Prompt Text -->
+                    <div id="q-prompt" class="text-base sm:text-lg font-medium text-slate-800 leading-relaxed tex2jax_process">
+                        <!-- Question text dynamically injected -->
+                    </div>
+
+                    <!-- Answer Input Options -->
+                    <div id="q-options-container" class="space-y-3 pt-2">
+                        <!-- Dynamically generated inputs -->
+                    </div>
+
+                    <!-- Question Bottom Action Bar -->
+                    <div class="flex items-center justify-between pt-6 border-t border-slate-100">
+                        <button id="btn-flag" onclick="toggleFlagCurrentQuestion()" class="flex items-center space-x-2 text-slate-500 hover:text-amber-600 bg-slate-100 hover:bg-amber-50 px-4 py-2.5 rounded-xl font-medium text-sm transition-all border border-slate-200 cursor-pointer">
+                            <i data-lucide="bookmark" class="w-4 h-4"></i>
+                            <span id="flag-btn-text">Tandai Ragu-ragu</span>
+                        </button>
+
+                        <div class="flex items-center space-x-2">
+                            <button id="btn-prev" onclick="navigateQuestion(-1)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2.5 rounded-xl text-sm transition-all disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer">
+                                Sebelumnya
+                            </button>
+                            <button id="btn-next" onclick="navigateQuestion(1)" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-all shadow-md shadow-blue-600/20 cursor-pointer">
+                                Berikutnya
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: RESULTS & DISCUSSION ================= -->
+        <section id="page-results" class="hidden space-y-8 animate-fadeIn">
+            <!-- Summary Score Card -->
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-slate-200 space-y-6">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-slate-100 pb-8">
+                    <div class="space-y-2 text-center md:text-left">
+                        <span id="score-category-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-700">
+                            Sangat Baik
+                        </span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Hasil Simulasi TKA Aljabar</h2>
+                        <p class="text-slate-500 text-sm">Evaluasi performa pengerjaan dan analisis pemahaman materi aljabar Anda.</p>
+                    </div>
+
+                    <div class="flex items-center space-x-6 bg-slate-50 px-8 py-4 rounded-2xl border border-slate-200">
+                        <div class="text-center">
+                            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Skor Akhir</div>
+                            <div id="final-score-val" class="text-4xl font-black text-blue-600">85.0</div>
+                        </div>
+                        <div class="h-10 w-px bg-slate-200"></div>
+                        <div class="text-center">
+                            <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Akurasi</div>
+                            <div id="accuracy-percent-val" class="text-2xl font-bold text-slate-800">85%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Metrics Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-emerald-50/50 border border-emerald-200/60 p-4 rounded-xl text-center">
+                        <div class="text-xs text-emerald-600 font-medium">Jawaban Benar</div>
+                        <div id="count-correct-val" class="text-2xl font-bold text-emerald-700 mt-1">0</div>
+                    </div>
+                    <div class="bg-rose-50/50 border border-rose-200/60 p-4 rounded-xl text-center">
+                        <div class="text-xs text-rose-600 font-medium">Jawaban Salah</div>
+                        <div id="count-wrong-val" class="text-2xl font-bold text-rose-700 mt-1">0</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-center">
+                        <div class="text-xs text-slate-500 font-medium">Tidak Dijawab</div>
+                        <div id="count-unanswered-val" class="text-2xl font-bold text-slate-700 mt-1">0</div>
+                    </div>
+                    <div class="bg-amber-50/50 border border-amber-200/60 p-4 rounded-xl text-center">
+                        <div class="text-xs text-amber-600 font-medium">Waktu Digunakan</div>
+                        <div id="time-spent-val" class="text-2xl font-bold text-amber-700 mt-1">00:00</div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <button onclick="startQuiz()" class="bg-blue-600 hover:bg-blue-500 text-white font-semibold px-6 py-3 rounded-xl transition-all shadow-md shadow-blue-600/20 text-sm flex items-center space-x-2 cursor-pointer">
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                        <span>Ulangi Simulasi</span>
+                    </button>
+                    <button onclick="goHome()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-6 py-3 rounded-xl transition-all text-sm flex items-center space-x-2 cursor-pointer">
+                        <i data-lucide="home" class="w-4 h-4"></i>
+                        <span>Kembali ke Beranda</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Discussion Section Heading -->
+            <div class="flex items-center justify-between pt-4">
+                <div>
+                    <h3 class="text-2xl font-extrabold text-slate-900">Pembahasan Mendalam Soal Aljabar</h3>
+                    <p class="text-slate-500 text-sm">Pelajari langkah penyelesaian sistematis dan analisis konsep untuk setiap nomor.</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="toggleAllExplanations(true)" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-3 py-1.5 rounded-lg transition-all cursor-pointer">Buka Semua</button>
+                    <button onclick="toggleAllExplanations(false)" class="text-xs bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium px-3 py-1.5 rounded-lg transition-all cursor-pointer">Tutup Semua</button>
+                </div>
+            </div>
+
+            <!-- Discussion Cards Container -->
+            <div id="discussion-cards-list" class="space-y-6">
+                <!-- 15 Discussion Cards Injected Dynamically -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs space-y-2">
+            <p>&copy; 2026 TKA Matematika Aljabar SMA. Hak Cipta Dilindungi.</p>
+            <p class="text-slate-500">Dirancang khusus sesuai standar materi dan indikator penalaran TKA Aljabar SMA 2026.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL: SUBMIT CONFIRMATION -->
+    <div id="modal-submit-confirm" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl space-y-6 border border-slate-100 text-center">
+            <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mx-auto">
+                <i data-lucide="help-circle" class="w-8 h-8"></i>
+            </div>
+            
+            <div class="space-y-2">
+                <h3 class="font-extrabold text-slate-900 text-xl">Selesaikan Ujian Sekarang?</h3>
+                <p id="submit-confirm-msg" class="text-slate-500 text-sm">
+                    Anda masih memiliki beberapa soal yang belum dijawab.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="toggleSubmitModal(false)" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 rounded-xl text-sm transition-all cursor-pointer">
+                    Lanjutkan Tes
+                </button>
+                <button onclick="submitQuizNow()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3 rounded-xl text-sm transition-all shadow-md shadow-emerald-600/20 cursor-pointer">
+                    Selesaikan Ujian
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN JAVASCRIPT LOGIC & BANK SOAL ALJABAR (15 NOMOR) -->
+    <script>
+        const rawQuestionBank = [
+            {
+                id: 1,
+                topic: "Eksponen & Bentuk Akar",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Bentuk sederhana dari ekspresi berpangkat pecahan $\\frac{4^{\\frac{2}{3}} \\times 27^{\\frac{1}{2}}}{8^{\\frac{5}{9}} \\times 3^{\\frac{1}{6}}}$ adalah ....",
+                options: ["$\\sqrt{3}$", "$3\\sqrt{3}$", "$3$", "$2\\sqrt{3}$", "$6$"],
+                correctAnswer: 0,
+                concept: "Sifat-sifat Operasi Eksponen dan Bentuk Pangkat Basis Sama",
+                known: "$4 = 2^2$, $27 = 3^3$, $8 = 2^3$.",
+                asked: "Bentuk sederhana dari ekspresi tersebut.",
+                steps: [
+                    "Ubah semua bilangan pokok ke basis prima $2$ dan $3$.",
+                    "Pembilang: $(2^2)^{\\frac{2}{3}} \\times (3^3)^{\\frac{1}{2}} = 2^{\\frac{4}{3}} \\times 3^{\\frac{3}{2}}$.",
+                    "Penyebut: $(2^3)^{\\frac{5}{9}} \\times 3^{\\frac{1}{6}} = 2^{\\frac{5}{3}} \\times 3^{\\frac{1}{6}}$.",
+                    "Gunakan sifat pembagian pangkat $\\frac{a^m}{a^n} = a^{m-n}$."
+                ],
+                calc: "$2^{\\frac{4}{3} - \\frac{5}{3}} \\times 3^{\\frac{3}{2} - \\frac{1}{6}} = 2^{-\\frac{1}{3}} \\times 3^{\\frac{4}{3}} = \\sqrt{3}$.",
+                correctReason: "Pengaplikasian sifat $a^m \\cdot a^n = a^{m+n}$ dan $\\frac{a^m}{a^n} = a^{m-n}$ menghasilkan eksponen $3^{1/2} = \\sqrt{3}$.",
+                wrongAnalysis: {
+                    1: "Salah hitung pada pengurangan eksponen basis 3.",
+                    2: "Lupa bahwa pangkat $1/2$ mewakili akar kuadrat.",
+                    3: "Salah mengalikan dengan basis 2.",
+                    4: "Mengalikan basis 2 dan 3 secara langsung."
+                },
+                summary: "Hasil penyederhanaan adalah $\\sqrt{3}$.",
+                tip: "Selalu ubah basis komposit menjadi basis faktor primanya terlebih dahulu."
+            },
+            {
+                id: 2,
+                topic: "Logaritma & Sifat Operasi",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Jika diketahui $^2\\log 3 = a$ dan $^3\\log 5 = b$, maka nilai dari $^6\\log 45$ jika dinyatakan dalam $a$ dan $b$ adalah ....",
+                options: ["\\frac{a(2 + b)}{a + 1}", "\\frac{a(1 + 2b)}{1 + a}", "\\frac{a + 2b}{a + 1}", "\\frac{2a + b}{a + 1}", "\\frac{ab + 2}{a + 1}"],
+                correctAnswer: 0,
+                concept: "Sifat Basis dan Penjumlahan Logaritma",
+                known: "$^2\\log 3 = a$, $^3\\log 5 = b \\Rightarrow ^2\\log 5 = a \\cdot b$.",
+                asked: "Nilai $^6\\log 45$.",
+                steps: [
+                    "Ubah basis menjadi 2: $^6\\log 45 = \\frac{^2\\log 45}{^2\\log 6}$.",
+                    "Uraikan 45 dan 6 ke faktor primanya: $45 = 3^2 \\times 5$ dan $6 = 2 \\times 3$.",
+                    "Pembilang: $^2\\log(3^2 \\times 5) = 2 \\cdot ^2\\log 3 + ^2\\log 5 = 2a + ab = a(2 + b)$.",
+                    "Penyebut: $^2\\log(2 \\times 3) = ^2\\log 2 + ^2\\log 3 = 1 + a$."
+                ],
+                calc: "$^6\\log 45 = \\frac{a(2 + b)}{a + 1}$.",
+                correctReason: "Pengubahan basis logaritma ke basis 2 dan penguraian faktor memberikan bentuk $\\frac{a(2+b)}{a+1}$.",
+                wrongAnalysis: {
+                    1: "Salah posisi koefisien 2 pada variabel $b$.",
+                    2: "Lupa mengalikan $a$ pada variabel $b$.",
+                    3: "Lupa bahwa $^2\\log 5 = ab$.",
+                    4: "Salah penguraian penyebut."
+                },
+                summary: "Bentuk sederhana dalam $a$ dan $b$ adalah $\\frac{a(2 + b)}{a + 1}$.",
+                tip: "Gunakan sifat perkalian basis $^x\\log y \\cdot ^y\\log z = ^x\\log z$."
+            },
+            {
+                id: 3,
+                topic: "Fungsi Kuadrat & Titik Puncak",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Grafik fungsi kuadrat $f(x) = -x^2 + 4x + 5$ memiliki nilai ekstrem (puncak) tertentu. Tentukan nilai maksimum dari fungsi tersebut.",
+                options: ["9", "5", "4", "8", "12"],
+                correctAnswer: 0,
+                concept: "Titik Puncak dan Nilai Ekstrem Fungsi Kuadrat",
+                known: "$a = -1, b = 4, c = 5$.",
+                asked: "Nilai maksimum fungsi kuadrat.",
+                steps: [
+                    "Tentukan koordinat sumbu simetri $x_p = \\frac{-b}{2a} = \\frac{-4}{2(-1)} = 2$.",
+                    "Substitusikan $x_p = 2$ ke dalam fungsi $f(x)$: $f(2) = -(2)^2 + 4(2) + 5$.",
+                    "Hitung nilai: $f(2) = -4 + 8 + 5 = 9$."
+                ],
+                calc: "Nilai maksimum = $9$.",
+                correctReason: "Substitusi titik simetri $x=2$ ke persamaan menghasilkan nilai maksimum 9.",
+                wrongAnalysis: {
+                    1: "Merupakan nilai konstanta $c$.",
+                    2: "Merupakan nilai sumbu simetri $x_p$.",
+                    3: "Kesalahan perhitungan aritmetika tanda minus.",
+                    4: "Kesalahan kuadrat."
+                },
+                summary: "Nilai maksimum fungsi kuadrat tersebut adalah 9.",
+                tip: "Nilai ekstrem dapat dicari langsung menggunakan formula $y_p = \\frac{D}{-4a}$."
+            },
+            {
+                id: 4,
+                topic: "Barisan & Deret Aritmetika",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Dalam sebuah gedung pertunjukan, susunan kursi penonton membentuk barisan aritmetika. Baris pertama berisi 24 kursi, baris kedua 28 kursi, baris ketiga 32 kursi, dan seterusnya. Jika gedung memiliki 15 baris kursi, total kapasitas kursi penonton adalah ....",
+                options: ["780 kursi", "750 kursi", "810 kursi", "720 kursi", "840 kursi"],
+                correctAnswer: 0,
+                concept: "Jumlah $n$ Suku Pertama Deret Aritmetika ($S_n$)",
+                known: "$a = 24$, beda $b = 4$, $n = 15$.",
+                asked: "Jumlah total kursi ($S_{15}$).",
+                steps: [
+                    "Gunakan rumus $S_n = \\frac{n}{2} (2a + (n - 1)b)$.",
+                    "Substitusi nilai: $S_{15} = \\frac{15}{2} \\cdot (2(24) + (14)4)$.",
+                    "Hitung dalam kurung: $48 + 56 = 104$.",
+                    "Hitung hasil akhir: $S_{15} = 15 \\times 52 = 780$."
+                ],
+                calc: "$S_{15} = 15 \\times 52 = 780$.",
+                correctReason: "Perhitungan deret aritmetika dengan $a=24, b=4, n=15$ menghasilkan 780.",
+                wrongAnalysis: {
+                    1: "Salah menghitung $15 \\times 50$.",
+                    2: "Salah menghitung beda.",
+                    3: "Menggunakan $n = 14$.",
+                    4: "Kesalahan perkalian."
+                },
+                summary: "Total kapasitas gedung pertunjukan adalah 780 kursi.",
+                tip: "Gunakan rumus $S_n = \\frac{n}{2}(a + U_n)$ jika suku terakhir sudah diketahui."
+            },
+            {
+                id: 5,
+                topic: "Deret Geometri Tak Hingga",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Sebuah bola dijatuhkan dari ketinggian 12 meter dan memantul kembali dengan ketinggian $\\frac{2}{3}$ dari tinggi sebelumnya secara terus-menerus. Total panjang lintasan bola sampai berhenti adalah ....",
+                options: ["60 meter", "54 meter", "48 meter", "36 meter", "72 meter"],
+                correctAnswer: 0,
+                concept: "Deret Geometri Tak Hingga Konvergen",
+                known: "Tinggi awal $h = 12$, rasio $r = \\frac{2}{3}$.",
+                asked: "Total panjang lintasan bola.",
+                steps: [
+                    "Gunakan rumus cepat lintasan bola: $S = h \\cdot \\left(\\frac{b+a}{b-a}\\right)$ dengan $r = a/b = 2/3$.",
+                    "Substitusi nilai: $S = 12 \\cdot \\left(\\frac{3+2}{3-2}\\right)$.",
+                    "Hitung hasil: $S = 12 \\cdot 5 = 60\\text{ meter}$."
+                ],
+                calc: "Total lintasan = $60\\text{ meter}$.",
+                correctReason: "Penerapan rumus deret tak hingga gabungan turun dan naik memberikan hasil 60 meter.",
+                wrongAnalysis: {
+                    1: "Hanya menghitung lintasan turun.",
+                    2: "Kesalahan rasio.",
+                    3: "Perhitungan keliru pada deret tunggal.",
+                    4: "Kesalahan penjumlahan."
+                },
+                summary: "Total panjang lintasan bola adalah 60 meter.",
+                tip: "Lintasan bola merupakan gabungan dua deret tak hingga (turun dan naik)."
+            },
+            {
+                id: 6,
+                topic: "Sistem Persamaan Linear",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Himpunan penyelesaian dari sistem persamaan $\\begin{cases} 2x + y = 7 \\\\ x - 3y = -7 \\end{cases}$ adalah $(x_0, y_0)$. Nilai dari $3x_0 + 2y_0$ adalah ....",
+                options: ["12", "14", "15", "19", "17"],
+                correctAnswer: 0,
+                concept: "Penyelesaian SPLDV Metode Eliminasi dan Substitusi",
+                known: "Persamaan 1: $2x + y = 7$, Persamaan 2: $x - 3y = -7$.",
+                asked: "Nilai $3x_0 + 2y_0$.",
+                steps: [
+                    "Eliminasi variabel $x$: Kalikan persamaan kedua dengan 2 $\\rightarrow 2x - 6y = -14$.",
+                    "Kurangkan kedua persamaan: $(2x + y) - (2x - 6y) = 7 - (-14) \\Rightarrow 7y = 21 \\Rightarrow y = 3$.",
+                    "Substitusi $y = 3$ ke $x - 3(3) = -7 \\Rightarrow x - 9 = -7 \\Rightarrow x = 2$.",
+                    "Hitung nilai yang ditanyakan: $3(2) + 2(3) = 6 + 6 = 12$."
+                ],
+                calc: "$x = 2, y = 3 \\Rightarrow 3(2) + 2(3) = 12$.",
+                correctReason: "Nilai $x=2$ dan $y=3$ memenuhi sistem dan menghasilkan $3(2)+2(3)=12$.",
+                wrongAnalysis: {
+                    1: "Kesalahan substitusi nilai.",
+                    2: "Kesalahan eliminasi.",
+                    3: "Kesalahan hitung.",
+                    4: "Kesalahan akhir."
+                },
+                summary: "Nilai dari $3x_0 + 2y_0$ adalah 12.",
+                tip: "Selalu uji kembali pasangan $(x, y)$ yang diperoleh ke dalam kedua persamaan awal."
+            },
+            {
+                id: 7,
+                topic: "Matriks & Operasi Aljabar Matriks",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Diketahui matriks $A = \\begin{pmatrix} 2 & 1 \\\\ 4 & 3 \\end{pmatrix}$. Determinan dari matriks $A$ adalah ....",
+                options: ["2", "4", "6", "10", "0"],
+                correctAnswer: 0,
+                concept: "Determinan Matriks Ordo $2 \\times 2$",
+                known: "$A = \\begin{pmatrix} 2 & 1 \\\\ 4 & 3 \\end{pmatrix}$.",
+                asked: "Determinan matriks $A$ ($\\det(A)$).",
+                steps: [
+                    "Gunakan rumus determinan ordo $2 \\times 2$: $\\det(A) = ad - bc$.",
+                    "Identifikasi elemen: $a = 2, b = 1, c = 4, d = 3$.",
+                    "Hitung: $\\det(A) = (2)(3) - (1)(4) = 6 - 4 = 2$."
+                ],
+                calc: "$\\det(A) = 2$.",
+                correctReason: "Perhitungan $ad - bc$ menghasilkan $6 - 4 = 2$.",
+                wrongAnalysis: {
+                    1: "Kesalahan perkalian diagonal.",
+                    2: "Kesalahan penjumlahan.",
+                    3: "Kesalahan elemen.",
+                    4: "Keliru menganggap matriks singular."
+                },
+                summary: "Determinan matriks $A$ adalah 2.",
+                tip: "Ingat rumus determinan: silang ke kanan dikurangi silang ke kiri."
+            },
+            {
+                id: 8,
+                topic: "Pertidaksamaan Nilai Mutlak",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Banyaknya bilangan bulat $x$ yang memenuhi pertidaksamaan $|2x - 5| \\le 7$ adalah ....",
+                options: ["8 buah", "7 buah", "6 buah", "9 buah", "5 buah"],
+                correctAnswer: 0,
+                concept: "Penyelesaian Pertidaksamaan Nilai Mutlak $|f(x)| \\le a$",
+                known: "$|2x - 5| \\le 7$.",
+                asked: "Jumlah bilangan bulat $x$ yang memenuhi.",
+                steps: [
+                    "Ubah bentuk mutlak menjadi bentuk interval: $-7 \\le 2x - 5 \\le 7$.",
+                    "Tambahkan 5 pada semua ruas: $-2 \\le 2x \\le 12$.",
+                    "Bagi dengan 2: $-1 \\le x \\le 6$.",
+                    "Daftar bilangan bulat: $\\{-1, 0, 1, 2, 3, 4, 5, 6\\}$ (Total ada 8 bilangan)."
+                ],
+                calc: "Jumlah bilangan bulat = $8$ buah.",
+                correctReason: "Rentang interval $[-1, 6]$ mencakup tepat 8 bilangan bulat inklusif.",
+                wrongAnalysis: {
+                    1: "Lupa menghitung salah satu batas ujung.",
+                    2: "Kesalahan pembagian interval.",
+                    3: "Kurang teliti.",
+                    4: "Salah rentang."
+                },
+                summary: "Terdapat 8 bilangan bulat yang memenuhi pertidaksamaan tersebut.",
+                tip: "Gunakan rumus jumlah bilangan bulat pada interval tertutup: $(b - a) + 1$."
+            },
+            {
+                id: 9,
+                topic: "Fungsi Komposisi",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Diketahui fungsi $f(x) = 2x + 3$ dan $g(x) = x^2 - 1$. Nilai dari fungsi komposisi $(f \\circ g)(2)$ adalah ....",
+                options: ["9", "7", "11", "15", "5"],
+                correctAnswer: 0,
+                concept: "Evaluasi Nilai Fungsi Komposisi",
+                known: "$f(x) = 2x + 3$, $g(x) = x^2 - 1$.",
+                asked: "Nilai $(f \\circ g)(2)$.",
+                steps: [
+                    "Cari nilai $g(2)$ terlebih dahulu: $g(2) = (2)^2 - 1 = 4 - 1 = 3$.",
+                    "Substitusikan hasilnya ke fungsi $f$: $(f \\circ g)(2) = f(g(2)) = f(3)$.",
+                    "Hitung $f(3) = 2(3) + 3 = 6 + 3 = 9$."
+                ],
+                calc: "$(f \\circ g)(2) = 9$.",
+                correctReason: "Evaluasi bertahap $g(2)=3$ dilanjutkan $f(3)=9$ memberikan hasil akhir 9.",
+                wrongAnalysis: {
+                    1: "Kesalahan hitung $g(2)$.",
+                    2: "Kesalahan substitusi $f$.",
+                    3: "Keliru urutan komposisi.",
+                    4: "Kesalahan aritmetika."
+                },
+                summary: "Nilai dari $(f \\circ g)(2)$ adalah 9.",
+                tip: "Evaluasi dari fungsi yang berada di sebelah dalam terlebih dahulu."
+            },
+            {
+                id: 10,
+                topic: "Suku Banyak (Polinomial)",
+                type: "mcq",
+                difficulty: "Sulit",
+                prompt: "Suku banyak $P(x) = 2x^3 - 5x^2 + ax + b$ dibagi oleh $(x - 2)$ bersisa 3, dan jika dibagi $(x + 1)$ bersisa -12. Nilai dari $a - b$ adalah ....",
+                options: ["5", "-1", "3", "-3", "1"],
+                correctAnswer: 0,
+                concept: "Teorema Sisa Pembagian Polinomial",
+                known: "$P(2) = 3$ dan $P(-1) = -12$.",
+                asked: "Nilai $a - b$.",
+                steps: [
+                    "Gunakan Teorema Sisa $P(k) = \\text{sisa}$.",
+                    "Untuk $(x-2) \\rightarrow P(2) = 2(8) - 5(4) + 2a + b = 3 \\Rightarrow 16 - 20 + 2a + b = 3 \\Rightarrow 2a + b = 7$.",
+                    "Untuk $(x+1) \\rightarrow P(-1) = 2(-1) - 5(1) - a + b = -12 \\Rightarrow -7 - a + b = -12 \\Rightarrow -a + b = -5$.",
+                    "Eliminasi/Substitusi SPLDV: $2a + b = 7$ dan $-a + b = -5$. Kurangkan: $3a = 12 \\Rightarrow a = 4$.",
+                    "Cari $b$: $-4 + b = -5 \\Rightarrow b = -1$. Hitung $a - b = 4 - (-1) = 5$."
+                ],
+                calc: "$a = 4, b = -1 \\Rightarrow a - b = 4 - (-1) = 5$.",
+                correctReason: "Penyelesaian sistem persamaan sisa menghasilkan $a=4$ dan $b=-1$, sehingga $a-b=5$.",
+                wrongAnalysis: {
+                    1: "Kesalahan tanda pada eliminasi.",
+                    2: "Kesalahan substitusi sisa.",
+                    3: "Keliru memasukkan nilai teorema.",
+                    4: "Kesalahan akhir."
+                },
+                summary: "Nilai dari $a - b$ adalah 5.",
+                tip: "Teorema sisa menyatakan nilai suku banyak pada $x = k$ sama dengan sisa pembagiannya."
+            },
+            {
+                id: 11,
+                topic: "Pertidaksamaan Eksponen",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Penyelesaian dari pertidaksamaan eksponen $3^{2x - 1} > 27^{x - 2}$ adalah ....",
+                options: ["x < 5", "x > 5", "x < 3", "x > 3", "x < 4"],
+                correctAnswer: 0,
+                concept: "Pertidaksamaan Eksponen dengan Basis $a > 1$",
+                known: "$3^{2x - 1} > (3^3)^{x - 2}$.",
+                asked: "Batas nilai $x$ yang memenuhi.",
+                steps: [
+                    "Samakan basis eksponen: $3^{2x - 1} > 3^{3(x - 2)}$.",
+                    "Sederhanakan eksponen: $3^{2x - 1} > 3^{3x - 6}$.",
+                    "Karena basis $3 > 1$, turunkan tanda pertidaksamaan: $2x - 1 > 3x - 6$.",
+                    "Selesaikan: $-1 + 6 > 3x - 2x \\Rightarrow 5 > x$ atau $x < 5$."
+                ],
+                calc: "Himpunan penyelesaian $x < 5$.",
+                correctReason: "Penyetaraan basis dan penurunan pertidaksamaan menghasilkan $x < 5$.",
+                wrongAnalysis: {
+                    1: "Kesalahan membalik tanda.",
+                    2: "Kesalahan perkalian eksponen.",
+                    3: "Keliru perpindahan ruas.",
+                    4: "Kesalahan hitung."
+                },
+                summary: "Penyelesaian pertidaksamaan tersebut adalah $x < 5$.",
+                tip: "Perhatikan basis eksponen; jika basis $> 1$, tanda pertidaksamaan tetap."
+            },
+            {
+                id: 12,
+                topic: "Persamaan Kuadrat & Akar-Akar",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Jika akar-akar persamaan kuadrat $2x^2 - 4x + 1 = 0$ adalah $\\alpha$ dan $\\beta$, maka nilai dari $\\alpha^2 + \\beta^2$ adalah ....",
+                options: ["3", "4", "5", "2", "6"],
+                correctAnswer: 0,
+                concept: "Sifat Akar-Akar Persamaan Kuadrat (Rumus Jumlah dan Hasil Kali)",
+                known: "Persamaan $2x^2 - 4x + 1 = 0 \\rightarrow a = 2, b = -4, c = 1$.",
+                asked: "Nilai $\\alpha^2 + \\beta^2$.",
+                steps: [
+                    "Tentukan $\\alpha + \\beta = \\frac{-b}{a} = \\frac{-(-4)}{2} = 2$.",
+                    "Tentukan $\\alpha \\cdot \\beta = \\frac{c}{a} = \\frac{1}{2}$.",
+                    "Gunakan identitas aljabar: $\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta$.",
+                    "Substitusikan nilai: $(2)^2 - 2(\\frac{1}{2}) = 4 - 1 = 3$."
+                ],
+                calc: "$\\alpha^2 + \\beta^2 = 3$.",
+                correctReason: "Penjabaran identitas $(\\alpha+\\beta)^2 - 2\\alpha\\beta$ menghasilkan nilai 3.",
+                wrongAnalysis: {
+                    1: "Lupa mengalikan 2 pada suku $2\\alpha\\beta$.",
+                    2: "Kesalahan rumus jumlah akar.",
+                    3: "Keliru koefisien $a$.",
+                    4: "Kesalahan aritmetika."
+                },
+                summary: "Nilai dari $\\alpha^2 + \\beta^2$ adalah 3.",
+                tip: "Hafalkan bentuk identitas dasar: $\\alpha^2 + \\beta^2 = (\\alpha + \\beta)^2 - 2\\alpha\\beta$."
+            },
+            {
+                id: 13,
+                topic: "Limit Fungsi Aljabar",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Nilai dari $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$ adalah ....",
+                options: ["6", "3", "0", "9", "Tak terhingga"],
+                correctAnswer: 0,
+                concept: "Penyelesaian Limit Bentuk Tak Tentu 0/0 dengan Pemfaktoran",
+                known: "Bentuk $\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}$ menghasilkan bentuk tak tentu $\\frac{0}{0}$.",
+                asked: "Nilai limit.",
+                steps: [
+                    "Faktorkan bentuk pembilang: $x^2 - 9 = (x - 3)(x + 3)$.",
+                    "Substitusikan ke limit: $\\lim_{x \\to 3} \\frac{(x - 3)(x + 3)}{x - 3}$.",
+                    "Coret faktor yang sama: $\\lim_{x \\to 3} (x + 3)$.",
+                    "Substitusikan $x = 3 \\rightarrow 3 + 3 = 6$."
+                ],
+                calc: "Hasil limit = $6$.",
+                correctReason: "Pemfaktoran pembilang menghilangkan faktor pembuat nol penyebut, menghasilkan 6.",
+                wrongAnalysis: {
+                    1: "Hanya menyubstitusi salah satu bagian.",
+                    2: "Keliru menganggap hasilnya nol.",
+                    3: "Kesalahan kuadrat.",
+                    4: "Salah mengasumsikan bentuk tak hingga."
+                },
+                summary: "Nilai limit fungsi tersebut adalah 6.",
+                tip: "Gunakan pemfaktoran atau turunan (L'Hopital) untuk menyelesaikan bentuk $\\frac{0}{0}$."
+            },
+            {
+                id: 14,
+                topic: "Barisan & Deret Geometri",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Suku ke-3 suatu barisan geometri adalah 18, dan suku ke-6 adalah 486. Suku ke-5 barisan tersebut adalah ....",
+                options: ["162", "54", "243", "81", "108"],
+                correctAnswer: 0,
+                concept: "Rasio dan Suku ke-$n$ Barisan Geometri",
+                known: "$U_3 = 18$ dan $U_6 = 486$.",
+                asked: "Nilai $U_5$.",
+                steps: [
+                    "Gunakan rumus $U_n = ar^{n-1}$. Diperoleh $ar^2 = 18$ dan $ar^5 = 486$.",
+                    "Bagi persamaan $U_6$ dengan $U_3$: $\\frac{ar^5}{ar^2} = \\frac{486}{18} \\Rightarrow r^3 = 27$.",
+                    "Tentukan rasio $r = 3$.",
+                    "Cari nilai $a$: $a(3)^2 = 18 \\Rightarrow 9a = 18 \\Rightarrow a = 2$.",
+                    "Hitung $U_5 = ar^4 = 2(3)^4 = 2(81) = 162$."
+                ],
+                calc: "$U_5 = 162$.",
+                correctReason: "Penentuan rasio $r=3$ dan suku pertama $a=2$ menghasilkan suku kelima 162.",
+                wrongAnalysis: {
+                    1: "Kesalahan pangkat rasio.",
+                    2: "Keliru mencari suku pertama.",
+                    3: "Kesalahan pembagian.",
+                    4: "Salah perhitungan aritmetika."
+                },
+                summary: "Suku ke-5 barisan geometri tersebut adalah 162.",
+                tip: "Perbandingan dua suku ke-$n$ pada barisan geometri langsung menghasilkan pangkat rasio."
+            },
+            {
+                id: 15,
+                topic: "Invers Matriks",
+                type: "mcq",
+                difficulty: "Sedang",
+                prompt: "Invers dari matriks $A = \\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$ adalah ....",
+                options: [
+                    "\\(\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}\\)",
+                    "\\(\\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}\\)",
+                    "\\(\\begin{pmatrix} 3 & 1 \\\\ 5 & 2 \\end{pmatrix}\\)",
+                    "\\(\\begin{pmatrix} -3 & 1 \\\\ 5 & -2 \\end{pmatrix}\\)",
+                    "\\(\\begin{pmatrix} 1 & -1 \\\\ -2 & 3 \\end{pmatrix}\\)"
+                ],
+                correctAnswer: 0,
+                concept: "Rumus Invers Matriks Ordo $2 \\times 2$",
+                known: "$A = \\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$.",
+                asked: "Invers matriks $A$ ($A^{-1}$).",
+                steps: [
+                    "Hitung determinan: $\\det(A) = (2)(3) - (1)(5) = 6 - 5 = 1$.",
+                    "Gunakan rumus invers $A^{-1} = \\frac{1}{\\det(A)} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$.",
+                    "Tukar posisi $a$ dan $d$, ubah tanda $b$ dan $c$: $\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$.",
+                    "Karena $\\det(A) = 1$, matriks invers tetap bernilai sama."
+                ],
+                calc: "$A^{-1} = \\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$.",
+                correctReason: "Perhitungan adjoint dibagi determinan 1 menghasilkan matriks $\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$.",
+                wrongAnalysis: {
+                    1: "Lupa menukar posisi diagonal utama.",
+                    2: "Keliru mengubah tanda elemen non-diagonal.",
+                    3: "Kesalahan tanda seluruh elemen.",
+                    4: "Kesalahan determinan."
+                },
+                summary: "Invers matriks tersebut adalah opsi pertama.",
+                tip: "Pastikan untuk menukar posisi elemen diagonal utama dan memberi tanda negatif pada elemen diagonal samping."
+            }
+        ];
+
+        /* ================= STATE MANAGEMENT ================= */
+        let activeQuestions = [];
+        let userAnswers = {};
+        let flaggedQuestions = new Set();
+        let currentQuestionIndex = 0;
+        let quizTimer = null;
+        let timeRemainingSeconds = 2700; // 45 minutes
+        let isQuizSubmitted = false;
+
+        window.onload = function() {
+            lucide.createIcons();
+            renderQuestionPalette();
+        };
+
+        function goHome() {
+            if (!isQuizSubmitted && quizTimer !== null) {
+                if (!confirm("Simulasi sedang berlangsung. Yakin ingin kembali ke Beranda?")) return;
+            }
+            clearInterval(quizTimer);
+            quizTimer = null;
+            document.getElementById("page-home").classList.remove("hidden");
+            document.getElementById("page-quiz").classList.add("hidden");
+            document.getElementById("page-results").classList.add("hidden");
+            document.getElementById("quiz-header-controls").classList.add("hidden");
+        }
+
+        function startQuiz() {
+            activeQuestions = JSON.parse(JSON.stringify(rawQuestionBank));
+            userAnswers = {};
+            flaggedQuestions.clear();
+            currentQuestionIndex = 0;
+            isQuizSubmitted = false;
+            timeRemainingSeconds = 45 * 60;
+
+            document.getElementById("page-home").classList.add("hidden");
+            document.getElementById("page-results").classList.add("hidden");
+            document.getElementById("page-quiz").classList.remove("hidden");
+            document.getElementById("quiz-header-controls").classList.remove("hidden");
+
+            startTimer();
+            renderQuestionPalette();
+            loadQuestion(0);
+            updateProgressBar();
+        }
+
+        function startTimer() {
+            if (quizTimer) clearInterval(quizTimer);
+            updateTimerDisplay();
+            quizTimer = setInterval(() => {
+                timeRemainingSeconds--;
+                updateTimerDisplay();
+                if (timeRemainingSeconds <= 0) {
+                    clearInterval(quizTimer);
+                    alert("Waktu habis! Jawaban dikumpulkan otomatis.");
+                    submitQuizNow();
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const mins = Math.floor(timeRemainingSeconds / 60);
+            const secs = timeRemainingSeconds % 60;
+            document.getElementById("timer-display").innerText = 
+                `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIndex = index;
+            const q = activeQuestions[index];
+
+            document.getElementById("q-number-badge").innerText = `Soal #${index + 1}`;
+            document.getElementById("q-topic-badge").innerText = q.topic;
+            document.getElementById("q-diff-badge").innerText = q.difficulty;
+            document.getElementById("q-type-badge").innerText = "Pilihan Ganda";
+            document.getElementById("q-prompt").innerHTML = q.prompt;
+
+            renderOptionsContainer(q);
+
+            const isFlagged = flaggedQuestions.has(q.id);
+            const flagBtn = document.getElementById("btn-flag");
+            if (isFlagged) {
+                flagBtn.classList.add("bg-amber-100", "text-amber-700", "border-amber-300");
+                document.getElementById("flag-btn-text").innerText = "Ditandai Ragu-ragu";
+            } else {
+                flagBtn.classList.remove("bg-amber-100", "text-amber-700", "border-amber-300");
+                document.getElementById("flag-btn-text").innerText = "Tandai Ragu-ragu";
+            }
+
+            document.getElementById("btn-prev").disabled = (index === 0);
+            const nextBtn = document.getElementById("btn-next");
+            if (index === activeQuestions.length - 1) {
+                nextBtn.innerText = "Selesai";
+            } else {
+                nextBtn.innerText = "Berikutnya";
+            }
+
+            if (window.MathJax) {
+                MathJax.typesetPromise();
+            }
+
+            updatePaletteActiveState();
+        }
+
+        function renderOptionsContainer(q) {
+            const container = document.getElementById("q-options-container");
+            container.innerHTML = "";
+            const currentAns = userAnswers[q.id];
+
+            q.options.forEach((opt, idx) => {
+                const isChecked = (currentAns === idx);
+                const optId = `opt_${q.id}_${idx}`;
+                
+                const div = document.createElement("div");
+                div.className = `flex items-center space-x-3 p-3.5 rounded-xl border transition-all cursor-pointer hover:bg-blue-50/50 ${isChecked ? 'border-blue-600 bg-blue-50/80 ring-2 ring-blue-500/20' : 'border-slate-200 bg-white'}`;
+                div.onclick = (e) => {
+                    selectMcqOption(q.id, idx);
+                };
+
+                div.innerHTML = `
+                    <input type="radio" id="${optId}" name="q_${q.id}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-blue-600 focus:ring-blue-500 cursor-pointer">
+                    <label for="${optId}" class="text-sm font-medium text-slate-700 cursor-pointer flex-grow tex2jax_process pointer-events-none">${opt}</label>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function selectMcqOption(qId, optionIndex) {
+            userAnswers[qId] = optionIndex;
+            loadQuestion(currentQuestionIndex);
+            updateProgressBar();
+            updatePaletteItem(currentQuestionIndex);
+        }
+
+        function toggleFlagCurrentQuestion() {
+            const q = activeQuestions[currentQuestionIndex];
+            if (flaggedQuestions.has(q.id)) flaggedQuestions.delete(q.id);
+            else flaggedQuestions.add(q.id);
+            loadQuestion(currentQuestionIndex);
+            updatePaletteItem(currentQuestionIndex);
+        }
+
+        function navigateQuestion(direction) {
+            const newIdx = currentQuestionIndex + direction;
+            if (newIdx >= 0 && newIdx < activeQuestions.length) {
+                loadQuestion(newIdx);
+            } else if (newIdx >= activeQuestions.length) {
+                confirmSubmitQuiz();
+            }
+        }
+
+        function renderQuestionPalette() {
+            const palette = document.getElementById("question-palette");
+            palette.innerHTML = "";
+
+            activeQuestions.forEach((q, idx) => {
+                const btn = document.createElement("button");
+                btn.id = `palette-btn-${idx}`;
+                btn.className = getPaletteBtnClass(q, idx);
+                btn.innerText = idx + 1;
+                btn.onclick = () => loadQuestion(idx);
+                palette.appendChild(btn);
+            });
+        }
+
+        function isQuestionAnswered(q) {
+            return userAnswers[q.id] !== undefined && userAnswers[q.id] !== null;
+        }
+
+        function getPaletteBtnClass(q, idx) {
+            const isAnswered = isQuestionAnswered(q);
+            const isFlagged = flaggedQuestions.has(q.id);
+            const isActive = (idx === currentQuestionIndex);
+
+            let base = "w-full h-9 rounded-xl font-bold text-xs transition-all flex items-center justify-center cursor-pointer ";
+            if (isActive) base += "ring-2 ring-blue-600 border-2 border-white shadow-md ";
+            if (isFlagged) base += "bg-amber-500 text-white";
+            else if (isAnswered) base += "bg-blue-600 text-white";
+            else base += "bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200";
+            return base;
+        }
+
+        function updatePaletteItem(idx) {
+            const q = activeQuestions[idx];
+            const btn = document.getElementById(`palette-btn-${idx}`);
+            if (btn) btn.className = getPaletteBtnClass(q, idx);
+        }
+
+        function updatePaletteActiveState() {
+            activeQuestions.forEach((q, idx) => updatePaletteItem(idx));
+        }
+
+        function updateProgressBar() {
+            let answeredCount = 0;
+            activeQuestions.forEach(q => { if (isQuestionAnswered(q)) answeredCount++; });
+            const total = activeQuestions.length;
+            const percent = (answeredCount / total) * 100;
+            
+            document.getElementById("progress-text").innerText = `${answeredCount} dari ${total} Terjawab`;
+            document.getElementById("progress-bar-fill").style.width = `${percent}%`;
+        }
+
+        function confirmSubmitQuiz() {
+            let answeredCount = 0;
+            activeQuestions.forEach(q => { if (isQuestionAnswered(q)) answeredCount++; });
+            const total = activeQuestions.length;
+            const unanswered = total - answeredCount;
+            const msg = document.getElementById("submit-confirm-msg");
+
+            if (unanswered > 0) {
+                msg.innerText = `Masih ada ${unanswered} soal belum terjawab. Yakin ingin mengumpulkan?`;
+            } else {
+                msg.innerText = "Semua soal telah dijawab. Yakin ingin mengumpulkan?";
+            }
+            toggleSubmitModal(true);
+        }
+
+        function toggleSubmitModal(show) {
+            const modal = document.getElementById("modal-submit-confirm");
+            if (show) modal.classList.remove("hidden");
+            else modal.classList.add("hidden");
+        }
+
+        function submitQuizNow() {
+            toggleSubmitModal(false);
+            clearInterval(quizTimer);
+            isQuizSubmitted = true;
+
+            let correctCount = 0;
+            let wrongCount = 0;
+            let unansweredCount = 0;
+
+            activeQuestions.forEach(q => {
+                const ans = userAnswers[q.id];
+                if (ans === undefined) unansweredCount++;
+                else if (ans === q.correctAnswer) correctCount++;
+                else wrongCount++;
+            });
+
+            const totalQ = activeQuestions.length;
+            const scoreVal = (correctCount / totalQ) * 100;
+            const accuracyVal = Math.round((correctCount / totalQ) * 100);
+
+            const spentSecs = (45 * 60) - timeRemainingSeconds;
+            const spentMins = Math.floor(spentSecs / 60);
+            const spentRemSecs = spentSecs % 60;
+
+            document.getElementById("final-score-val").innerText = scoreVal.toFixed(1);
+            document.getElementById("accuracy-percent-val").innerText = `${accuracyVal}%`;
+            document.getElementById("count-correct-val").innerText = correctCount;
+            document.getElementById("count-wrong-val").innerText = wrongCount;
+            document.getElementById("count-unanswered-val").innerText = unansweredCount;
+            document.getElementById("time-spent-val").innerText = `${spentMins}m ${spentRemSecs}s`;
+
+            document.getElementById("page-quiz").classList.add("hidden");
+            document.getElementById("quiz-header-controls").classList.add("hidden");
+            document.getElementById("page-results").classList.remove("hidden");
+
+            renderDiscussionCards();
+
+            if (window.MathJax) MathJax.typesetPromise();
+        }
+
+        function renderDiscussionCards() {
+            const list = document.getElementById("discussion-cards-list");
+            list.innerHTML = "";
+
+            activeQuestions.forEach((q, idx) => {
+                const userAns = userAnswers[q.id];
+                const isCorrect = (userAns === q.correctAnswer);
+
+                const card = document.createElement("div");
+                card.className = `bg-white rounded-2xl border shadow-sm transition-all overflow-hidden ${isCorrect ? 'border-emerald-200' : 'border-rose-200'}`;
+
+                let statusBadgeHTML = isCorrect ? 
+                    `<span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 mr-1"></i> Benar</span>` :
+                    `<span class="bg-rose-100 text-rose-700 text-xs font-bold px-3 py-1 rounded-full flex items-center"><i data-lucide="x" class="w-3.5 h-3.5 mr-1"></i> Salah / Kosong</span>`;
+
+                let userAnsDisplay = (userAns !== undefined) ? q.options[userAns] : "Tidak Dijawab";
+                let correctAnsDisplay = q.options[q.correctAnswer];
+
+                card.innerHTML = `
+                    <div class="p-5 sm:p-6 bg-slate-50 border-b border-slate-100 flex flex-wrap items-center justify-between gap-3">
+                        <div class="flex items-center space-x-3">
+                            <span class="bg-slate-900 text-white font-extrabold px-3 py-1 rounded-lg text-sm">#${idx + 1}</span>
+                            <span class="text-xs font-semibold text-slate-500 bg-white px-2.5 py-1 rounded-md border border-slate-200">${q.topic}</span>
+                        </div>
+                        ${statusBadgeHTML}
+                    </div>
+
+                    <div class="p-5 sm:p-6 space-y-6">
+                        <div class="text-slate-800 font-medium text-base tex2jax_process leading-relaxed">
+                            ${q.prompt}
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs sm:text-sm">
+                            <div>
+                                <span class="text-slate-400 font-semibold block mb-1">Jawaban Anda:</span>
+                                <div class="font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'} tex2jax_process">${userAnsDisplay}</div>
+                            </div>
+                            <div>
+                                <span class="text-slate-400 font-semibold block mb-1">Kunci Jawaban Benar:</span>
+                                <div class="font-bold text-emerald-700 tex2jax_process">${correctAnsDisplay}</div>
+                            </div>
+                        </div>
+
+                        <details class="group border border-slate-200 rounded-xl overflow-hidden bg-white">
+                            <summary class="flex items-center justify-between p-4 bg-slate-100/70 hover:bg-slate-100 cursor-pointer font-bold text-slate-800 text-sm select-none">
+                                <span class="flex items-center text-blue-700">
+                                    <i data-lucide="book-open" class="w-4 h-4 mr-2"></i> Lihat Pembahasan Mendalam Step-by-Step
+                                </span>
+                                <i data-lucide="chevron-down" class="w-4 h-4 text-slate-500 transition-transform group-open:rotate-180"></i>
+                            </summary>
+
+                            <div class="p-5 space-y-5 text-xs sm:text-sm text-slate-700 border-t border-slate-200 bg-white">
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="bookmark" class="w-3.5 h-3.5 mr-1.5"></i> A. Jawaban yang Benar</h5>
+                                    <p class="font-bold text-emerald-700 tex2jax_process">${correctAnsDisplay}</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="cpu" class="w-3.5 h-3.5 mr-1.5"></i> B. Konsep yang Digunakan</h5>
+                                    <p class="tex2jax_process">${q.concept}</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="info" class="w-3.5 h-3.5 mr-1.5"></i> C. Informasi yang Diketahui</h5>
+                                    <p class="tex2jax_process">${q.known}</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="help-circle" class="w-3.5 h-3.5 mr-1.5"></i> D. Hal yang Ditanyakan</h5>
+                                    <p class="tex2jax_process">${q.asked}</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="list-ordered" class="w-3.5 h-3.5 mr-1.5"></i> E. Langkah Penyelesaian</h5>
+                                    <ul class="list-disc list-inside space-y-1 pl-1">
+                                        ${q.steps.map(step => `<li class="tex2jax_process">${step}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="calculator" class="w-3.5 h-3.5 mr-1.5"></i> F. Perhitungan Lengkap</h5>
+                                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200 math-scroll font-mono text-xs tex2jax_process">
+                                        ${q.calc}
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 mr-1.5"></i> G. Alasan Pilihan Benar</h5>
+                                    <p class="tex2jax_process">${q.correctReason}</p>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="alert-triangle" class="w-3.5 h-3.5 mr-1.5"></i> H. Analisis Kesalahan</h5>
+                                    <ul class="list-disc list-inside space-y-1 pl-1 text-slate-600">
+                                        ${Object.entries(q.wrongAnalysis).map(([k, v]) => `<li class="tex2jax_process">${v}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="file-text" class="w-3.5 h-3.5 mr-1.5"></i> I. Kesimpulan</h5>
+                                    <p class="tex2jax_process">${q.summary}</p>
+                                }
+                                <div>
+                                    <h5 class="font-bold text-blue-900 border-b pb-1 mb-1.5 flex items-center"><i data-lucide="zap" class="w-3.5 h-3.5 mr-1.5"></i> J. Tips / Strategi Cepat</h5>
+                                    <p class="text-amber-800 bg-amber-50 p-2.5 rounded-lg border border-amber-200 font-medium tex2jax_process">${q.tip}</p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                `;
+                list.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        function toggleAllExplanations(openState) {
+            const details = document.querySelectorAll("#discussion-cards-list details");
+            details.forEach(d => {
+                if (openState) d.setAttribute("open", "true");
+                else d.removeAttribute("open");
+            });
+        }
+    </script>
+</body>
+</html>
